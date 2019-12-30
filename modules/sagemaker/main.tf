@@ -21,7 +21,7 @@ resource "aws_sagemaker_model" "model_a" {
 
   lifecycle {
     create_before_destroy = true
-    ignore_changes = ["name"]
+    ignore_changes        = ["name"]
   }
 }
 
@@ -38,25 +38,11 @@ resource "aws_sagemaker_endpoint_configuration" "ec" {
 
   lifecycle {
     create_before_destroy = true
-    ignore_changes = ["name"]
+    ignore_changes        = ["name"]
   }
-
-  #depends_on = [aws_sagemaker_model.model_a]
 }
 
 resource "aws_sagemaker_endpoint" "endpoint" {
   name                 = var.endpoint_name
   endpoint_config_name = aws_sagemaker_endpoint_configuration.ec.name
-
-  #depends_on = [aws_sagemaker_endpoint_configuration.ec]
-}
-
-resource "null_resource" "delay" {
-  provisioner "local-exec" {
-    command = "sleep 30"
-  }
-
-  triggers = {
-    "before" = "${aws_sagemaker_endpoint.endpoint.id}"
-  }
 }

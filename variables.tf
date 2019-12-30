@@ -3,7 +3,7 @@ variable "aws_region" {
 }
 
 variable "model_name_a" {
-  default = "A"
+  default = "iris-data-model-a"
 }
 
 variable "image_a" {

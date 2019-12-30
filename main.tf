@@ -3,39 +3,12 @@ module "sagemaker_role" {
 
   name       = "sagemaker"
   identifier = "sagemaker.amazonaws.com"
-  policy     = data.aws_iam_policy_document.sagemaker_policy_doc.json
+  policy     = data.aws_iam_policy.sagemaker_role_policy.policy
 }
 
-data "aws_iam_policy_document" "sagemaker_policy_doc" {
-  statement {
-    effect = "Allow"
-    actions = [
-      "sagemaker:CreateModel",
-      "sagemaker:DescribeModel",
-      "sagemaker:DeleteModel",
-      "sagemaker:CreateEndpoint",
-      "sagemaker:CreateEndpointConfig",
-      "sagemaker:DescribeEndpoint",
-      "sagemaker:DescribeEndpointConfig",
-      "sagemaker:DeleteEndpoint"
-    ]
-    resources = ["arn:aws:sagemaker:${var.aws_region}:${data.aws_caller_identity.self.account_id}:*"]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
-      "s3:GetBucketLocation",
-      "s3:ListBucket",
-      "s3:GetObject"
-    ]
-    resources = [
-      "arn:aws:s3:::aws-machine-learning-blog/*"
-    ]
-  }
+data "aws_iam_policy" "sagemaker_role_policy" {
+  arn = "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
 }
-
-data "aws_caller_identity" "self" {}
 
 module "sagemaker" {
   source = "./modules/sagemaker"
