@@ -2,6 +2,14 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
+variable "function_name" {
+  default = "iris-data-lambda"
+}
+
+variable "api_gateway_name" {
+  default = "iris-data-api-gateway"
+}
+
 variable "model_name_a" {
   default = "iris-data-model-a"
 }
