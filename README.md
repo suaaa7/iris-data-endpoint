@@ -27,8 +27,6 @@ $ make destroy
 
 ## Reference
 
-Amazon SageMaker エンドポイント用のサーバーレスフロントエンドを構築する
-https://aws.amazon.com/jp/blogs/news/build-a-serverless-frontend-for-an-amazon-sagemaker-endpoint/
+[Amazon SageMaker エンドポイント用のサーバーレスフロントエンドを構築する](https://aws.amazon.com/jp/blogs/news/build-a-serverless-frontend-for-an-amazon-sagemaker-endpoint/)
 
-Build a serverless frontend for an Amazon SageMaker endpoint
-http://www.aible.ca/build-a-serverless-frontend-for-an-amazon-sagemaker-endpoint/
+[Build a serverless frontend for an Amazon SageMaker endpoint](http://www.aible.ca/build-a-serverless-frontend-for-an-amazon-sagemaker-endpoint/)
